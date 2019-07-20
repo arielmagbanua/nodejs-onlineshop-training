@@ -7,7 +7,10 @@ const app = express();
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
+// parse request body
 app.use(bodyParser.urlencoded({extended: false}));
+
+// set a static directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRoutes);
