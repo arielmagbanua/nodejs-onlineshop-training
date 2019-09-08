@@ -9,7 +9,7 @@ const Product = sequelize.define('product', {
 		primaryKey: true
 	},
 
-	titile: Sequelize.STRING,
+	title: Sequelize.STRING,
 
 	price: {
 		type: Sequelize.DOUBLE,
