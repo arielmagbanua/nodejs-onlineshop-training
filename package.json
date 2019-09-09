@@ -11,7 +11,8 @@
   "author": "ariel magbanua",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.18.11"
+    "nodemon": "^1.18.11",
+    "@types/sequelize": "^4.28.4"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
