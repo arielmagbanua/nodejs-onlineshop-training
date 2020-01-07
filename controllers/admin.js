@@ -1,24 +1,11 @@
 const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
-  const user = req.session.user;
-  
-  if (user) {
-    return res.render('admin/edit-product', {
-      pageTitle: 'Add Product',
-      path: '/admin/add-product',
-      editing: false,
-      loggedUser: user
-    });
-  }
-
-  res.redirect('/login');
-  
-  // res.render('admin/edit-product', {
-  //   pageTitle: 'Add Product',
-  //   path: '/admin/add-product',
-  //   editing: false
-  // });
+  res.render('admin/edit-product', {
+    pageTitle: 'Add Product',
+    path: '/admin/add-product',
+    editing: false
+  });
 };
 
 exports.postAddProduct = (req, res, next) => {
@@ -89,36 +76,18 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  const user = req.session.user;
-
-  if (user) {
-    return Product.find()
-      .then(products => {
-        console.log(products);
-        res.render('admin/products', {
-          prods: products,
-          pageTitle: 'Admin Products',
-          path: '/admin/products',
-          loggedUser: user
-        });
-      })
-      .catch(err => console.log(err));
-  }
-
-  res.redirect('/login');
-
-  // Product.find()
-  //   // .select('title price -_id')
-  //   // .populate('userId', 'name')
-  //   .then(products => {
-  //     console.log(products);
-  //     res.render('admin/products', {
-  //       prods: products,
-  //       pageTitle: 'Admin Products',
-  //       path: '/admin/products'
-  //     });
-  //   })
-  //   .catch(err => console.log(err));
+  Product.find()
+    // .select('title price -_id')
+    // .populate('userId', 'name')
+    .then(products => {
+      console.log(products);
+      res.render('admin/products', {
+        prods: products,
+        pageTitle: 'Admin Products',
+        path: '/admin/products'
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 exports.postDeleteProduct = (req, res, next) => {
